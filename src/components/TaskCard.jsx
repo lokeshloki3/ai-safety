@@ -1,35 +1,19 @@
 import React from 'react'
 
-const TaskCard = () => {
+const TaskCard = ({ task, toggleDescription }) => {
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type='text'
-                    name='title'
-                    placeholder='Title'
-                    value={formData.title}
-                    onChange={handleChange}
-                    required
-                />
-                <textarea
-                    name='description'
-                    placeholder='Description'
-                    value={formData.description}
-                    onChange={handleChange}
-                    required
-                />
-                <select
-                    name='severity'
-                    value={formData.severity}
-                    onChange={handleChange}
-                >
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-                <button type='submit'>Add Task</button>
-            </form>
+            <h2>{task.title}</h2>
+            <p>Severity: {task.severity}</p>
+            <p>Reported At: {new Date(task.reported_at).toLocaleDateString()}</p>
+            <button onClick={() => toggleDescription(task.id)}>
+                {task.descExpanded ? "Hide Details" : "Show Details"}
+            </button>
+            {
+                task.descExpanded && (
+                    <p>{task.description}</p>
+                )
+            }
         </div>
     )
 }
