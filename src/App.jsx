@@ -25,8 +25,8 @@ const App = () => {
     );
 
   return (
-    <div>
-      <h1>AI Safety Incident Dashboard</h1>
+    <div className="min-h-screen bg-pink-50 text-gray-800 p-8 text-center w-11/12 mx-auto">
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">AI Safety Incident Dashboard</h1>
       <FilterTasks
         severityFilter={severityFilter}
         setSeverityFilter={setSeverityFilter}
@@ -34,7 +34,7 @@ const App = () => {
         setSortOrder={setSortOrder}
       />
       <TaskForm addNewTask={addNewTask} />
-      <div>
+      <div className="mt-6">
         {
           filteredTasks.map((task) => {
             return (
